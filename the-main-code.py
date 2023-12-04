@@ -114,6 +114,5 @@ def main():
             for i, (name, shots) in enumerate(players):
                 print(f"{i + 1}. {name} - {shots} shots")
             break
-
 if __name__ == "__main__":
     main()
