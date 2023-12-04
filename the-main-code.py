@@ -30,3 +30,15 @@ def is_valid_position(board, ship, orientation, row, col):
                 return False
     return True
     
+def place_ship(board, ship, orientation):
+    while True:
+        row = random.randint(0, 6)
+        col = random.randint(0, 6)
+        if is_valid_position(board, ship, orientation, row, col):
+            if orientation == "H":
+                for i in range(ship):
+                    board[row][col + i] = str(ship)
+            else:
+                for i in range(ship):
+                    board[row + i][col] = str(ship)
+            break
