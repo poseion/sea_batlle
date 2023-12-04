@@ -42,3 +42,14 @@ def place_ship(board, ship, orientation):
                 for i in range(ship):
                     board[row + i][col] = str(ship)
             break
+def player_shot(board, shots):
+    while True:
+        try:
+            user_input = input("Enter your shot (e.g., A5): ").upper()
+            if len(user_input) == 2 and "A" <= user_input[0] <= "G" and "1" <= user_input[1] <= "7":
+                row = int(user_input[1]) - 1
+                col = ord(user_input[0]) - ord("A")
+                if board[row][col] == " ":
+                    board[row][col] = "M"
+                    print("Miss!")
+                elif board[row][col] == "H":
