@@ -19,6 +19,7 @@ def print_board(board, hide_ships=True):
                 print(board[i][j], end=" ")
         print()
 
+
 def is_valid_position(board, ship, orientation, row, col):
     if orientation == "H":
         for i in range(ship):
@@ -29,6 +30,7 @@ def is_valid_position(board, ship, orientation, row, col):
             if row + i >= 7 or board[row + i][col] != " ":
                 return False
     return True
+
 
 def place_ship(board, ship, orientation):
     while True:
@@ -42,6 +44,7 @@ def place_ship(board, ship, orientation):
                 for i in range(ship):
                     board[row + i][col] = str(ship)
             break
+
 
 def player_shot(board, shots):
     while True:
@@ -75,6 +78,7 @@ def player_shot(board, shots):
         except ValueError:
             print("Invalid input. Please enter a valid shot (e.g., A5).")
 
+
 def play_game():
     player_name = input("Enter your name: ")
     clear_screen()
@@ -100,6 +104,7 @@ def play_game():
 
     play_again = input("Do you want to play again? (yes/no): ").lower()
     return play_again == "yes", player_name, shots
+
 
 def main():
     players = []
