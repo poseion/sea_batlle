@@ -74,3 +74,28 @@ def player_shot(board, shots):
                 print("Invalid input. Please enter a valid shot (e.g., A5).")
         except ValueError:
             print("Invalid input. Please enter a valid shot (e.g., A5).")
+def play_game():
+    player_name = input("Enter your name: ")
+    clear_screen()
+
+    # Initialize the board
+    board = [[" " for _ in range(7)] for _ in range(7)]
+
+    # Place ships on the board
+    place_ship(board, 3, random.choice(["H", "V"]))
+    place_ship(board, 2, random.choice(["H", "V"]))
+    place_ship(board, 2, random.choice(["H", "V"]))
+    place_ship(board, 1, random.choice(["H", "V"]))
+    place_ship(board, 1, random.choice(["H", "V"]))
+    place_ship(board, 1, random.choice(["H", "V"]))
+    place_ship(board, 1, random.choice(["H", "V"]))
+
+    shots = 0
+    while True:
+        print_board(board)
+        if player_shot(board, shots):
+            break
+        shots += 1
+
+    play_again = input("Do you want to play again? (yes/no): ").lower()
+    return play_again == "yes", player_name, shots
