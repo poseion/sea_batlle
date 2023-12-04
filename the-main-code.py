@@ -42,6 +42,7 @@ def place_ship(board, ship, orientation):
                 for i in range(ship):
                     board[row + i][col] = str(ship)
             break
+
 def player_shot(board, shots):
     while True:
         try:
@@ -53,3 +54,23 @@ def player_shot(board, shots):
                     board[row][col] = "M"
                     print("Miss!")
                 elif board[row][col] == "H":
+                    print("You already shot this ship. Try again.")
+                else:
+                    ship_size = int(board[row][col])
+                    board[row][col] = "H"
+                    if all("H" in row for row in board):
+                        print_board(board, hide_ships=False)
+                        print("Congratulations! You sank all the ships!")
+                        print(f"Number of shots: {shots}")
+                        return True
+                    else:
+                        print("Hit!")
+                        if all(board[i][col] == "H" for i in range(row, row + ship_size)):
+                            print(f"You sank a ship of size {ship_size}!")
+                        if all(board[row][j] == "H" for j in range(col, col + ship_size)):
+                            print(f"You sank a ship of size {ship_size}!")
+                return False
+            else:
+                print("Invalid input. Please enter a valid shot (e.g., A5).")
+        except ValueError:
+            print("Invalid input. Please enter a valid shot (e.g., A5).")
