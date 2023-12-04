@@ -99,3 +99,17 @@ def play_game():
 
     play_again = input("Do you want to play again? (yes/no): ").lower()
     return play_again == "yes", player_name, shots
+
+def main():
+    players = []
+    while True:
+        play_again, player_name, shots = play_game()
+        players.append((player_name, shots))
+        if not play_again:
+            clear_screen()
+            print("Game Over!")
+            print("Top players:")
+            players.sort(key=lambda x: x[1])
+            for i, (name, shots) in enumerate(players):
+                print(f"{i + 1}. {name} - {shots} shots")
+            break
