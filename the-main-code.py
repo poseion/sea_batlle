@@ -3,7 +3,7 @@ import random
 
 def clear_screen():
     os.system("cls" if os.name == "nt" else "clear")
-    
+
 def print_board(board, hide_ships=True):
     print("  A B C D E F G")
     for i in range(7):
@@ -29,7 +29,7 @@ def is_valid_position(board, ship, orientation, row, col):
             if row + i >= 7 or board[row + i][col] != " ":
                 return False
     return True
-    
+
 def place_ship(board, ship, orientation):
     while True:
         row = random.randint(0, 6)
@@ -74,6 +74,7 @@ def player_shot(board, shots):
                 print("Invalid input. Please enter a valid shot (e.g., A5).")
         except ValueError:
             print("Invalid input. Please enter a valid shot (e.g., A5).")
+
 def play_game():
     player_name = input("Enter your name: ")
     clear_screen()
@@ -113,3 +114,6 @@ def main():
             for i, (name, shots) in enumerate(players):
                 print(f"{i + 1}. {name} - {shots} shots")
             break
+
+if __name__ == "__main__":
+    main()
